@@ -1,20 +1,26 @@
-let edad = 0
+let carrito = [];
 
-function guardarEdadUsuario(){
-    edad = prompt("¿Qué edad tienes?");
-}
+function agregarAlCarrito() {
+  let elementoDeEntrada;
 
-function esMayorDeEdad(edadUsuario) {
-    return edadUsuario >= 18;
-}
-
-function mostrarMensaje() {
-    if (esMayorDeEdad(edad)) {
-        alert("Eres mayor de edad");
-    } else {
-        alert("Eres menor de edad");
+  do {
+    elementoDeEntrada = prompt(
+      "Ingrese el nombre del producto a agregar al carrito (o 'salir' para terminar):"
+    );
+    if (elementoDeEntrada !== "salir") {
+      carrito.push(elementoDeEntrada);
+      console.log(`Producto "${elementoDeEntrada}" agregado al carrito.`);
     }
+  } while (elementoDeEntrada && elementoDeEntrada.toLowerCase() !== "salir");
+
+  if (carrito.length === 0) {
+    alert("No se han agregado productos al carrito.");
+  } else {
+    console.log("Carrito de compras:", carrito);
+    alert(
+      "Carrito de compras actualizado. Puedes ver la consola para más detalles."
+    );
+  }
 }
 
-guardarEdadUsuario();
-mostrarMensaje();
+agregarAlCarrito();
